@@ -1,0 +1,1020 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://cgupm.github.io/ratp_poll/reference/ratp_api/stop_times/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="shortcut icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-5.5.11" name="generator"/>
+<title>stop_times.py - ratp_poll documentation</title>
+<link href="../../../assets/stylesheets/main.860688db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+
+        <style>
+        .git-revision-date-localized-plugin-iso_date { display: none }
+        @media print {
+           .git-revision-date-localized-plugin-iso_date { display: inline } 
+           .git-revision-date-localized-plugin-timeago { display: none } 
+        }
+        </style>
+        </head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#ratp_poll.ratp_api.stop_times">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header-nav md-grid">
+<a aria-label="ratp_poll documentation" class="md-header-nav__button md-logo" href="https://cgupm.github.io/ratp_poll" title="ratp_poll documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+<label class="md-header-nav__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header-nav__title" data-md-component="header-title">
+<div class="md-header-nav__ellipsis">
+<span class="md-header-nav__topic md-ellipsis">
+            ratp_poll documentation
+          </span>
+<span class="md-header-nav__topic md-ellipsis">
+            
+              stop_times.py
+            
+          </span>
+</div>
+</div>
+<label class="md-header-nav__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" data-md-component="search-reset" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header-nav__source">
+<a class="md-source" href="https://github.com/cgupm/ratp_poll/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    cgupm/ratp_poll
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ratp_poll documentation" class="md-nav__button md-logo" href="https://cgupm.github.io/ratp_poll" title="ratp_poll documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+    ratp_poll documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" href="https://github.com/cgupm/ratp_poll/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    cgupm/ratp_poll
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../.." title="Overview">
+      Overview
+    </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
+<label class="md-nav__link" for="nav-2">
+      Reference
+      <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Reference" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="nav-2">
+<span class="md-nav__icon md-icon"></span>
+        Reference
+      </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cli/" title="cli.py">
+      cli.py
+    </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" id="nav-2-2" type="checkbox"/>
+<label class="md-nav__link" for="nav-2-2">
+      ratp_api
+      <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="ratp_api" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="nav-2-2">
+<span class="md-nav__icon md-icon"></span>
+        ratp_api
+      </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+        stop_times.py
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./" title="stop_times.py">
+      stop_times.py
+    </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times">
+    ratp_poll.ratp_api.stop_times
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.fetch">
+    fetch()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.fetch_log">
+    fetch_log()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.get_stop_times">
+    get_stop_times()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.get_stop_times_batch">
+    get_stop_times_batch()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.get_stop_times_batch_parsed">
+    get_stop_times_batch_parsed()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.run">
+    run()
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" id="nav-2-3" type="checkbox"/>
+<label class="md-nav__link" for="nav-2-3">
+      daemon
+      <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="daemon" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="nav-2-3">
+<span class="md-nav__icon md-icon"></span>
+        daemon
+      </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../daemon/daemon/" title="daemon.py">
+      daemon.py
+    </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times">
+    ratp_poll.ratp_api.stop_times
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.fetch">
+    fetch()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.fetch_log">
+    fetch_log()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.get_stop_times">
+    get_stop_times()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.get_stop_times_batch">
+    get_stop_times_batch()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.get_stop_times_batch_parsed">
+    get_stop_times_batch_parsed()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.ratp_api.stop_times.run">
+    run()
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/cgupm/ratp_poll/edit/master/docs/reference/ratp_api/stop_times.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1>stop_times.py</h1>
+<div class="doc doc-object doc-module">
+<h2 class="hidden-toc" href="#ratp_poll.ratp_api.stop_times" id="ratp_poll.ratp_api.stop_times" style="visibility: hidden; width: 0; height: 0;">
+</h2>
+<div class="doc doc-contents first">
+<div class="doc doc-children">
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="ratp_poll.ratp_api.stop_times.fetch">
+<code class="highlight language-python">
+fetch<span class="p">(</span><span class="n">transport_type</span><span class="p">,</span> <span class="n">line_code</span><span class="p">,</span> <span class="n">station_name</span><span class="p">,</span> <span class="n">way</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">)</span> </code>
+</h2>
+<div class="doc doc-contents">
+<p>Fetch the remaining time for a line to a given stop with a defined way
+reusing a session.</p>
+<p>Passes some additional data to the fetch_log function. The  CSV column
+names are:
+'actual_date,transport_type,line_code,stop_code,way,'     'resp_time,resp_status,resp_length,timeout,     'connection_error,max_connections,timeout_time'</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transport_type</code></td>
+<td><code>str</code></td>
+<td>
+<p>The transport type (metros, rers, tramways, buses
+or noctiliens).</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>line_code</code></td>
+<td><code>str</code></td>
+<td>
+<p>The line code (e.g. '187').</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>station_name</code></td>
+<td><code>str</code></td>
+<td>
+<p>The name of the station (e.g.
+'Division+Leclerc+-+Camille+Desmoulins').</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>way</code></td>
+<td><code>str</code></td>
+<td>
+<p>Way of the line ('A', 'R' or 'A+R').</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>session</code></td>
+<td><code>ClientSession</code></td>
+<td>
+<p>The aiohttp ClientSession.</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>fetch_conf</code></td>
+<td><code>dict</code></td>
+<td>
+<p>Dictionary with configuration parameters for
+fetching the content.</p>
+</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>str</code></td>
+<td>
+<p>Response text.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>ratp_poll/ratp_api/stop_times.py</code></summary>
+<div class="highlight">
+<pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">fetch</span><span class="p">(</span><span class="n">transport_type</span><span class="p">,</span>
+                <span class="n">line_code</span><span class="p">,</span>
+                <span class="n">station_name</span><span class="p">,</span>
+                <span class="n">way</span><span class="p">,</span>
+                <span class="n">session</span><span class="p">,</span>
+                <span class="n">fetch_conf</span><span class="p">):</span>
+    <span class="sd">"""Fetch the remaining time for a line to a given stop with a defined way</span>
+<span class="sd">    reusing a session.</span>
+
+<span class="sd">    Passes some additional data to the fetch_log function. The  CSV column</span>
+<span class="sd">    names are:</span>
+<span class="sd">    'actual_date,transport_type,line_code,stop_code,way,' \</span>
+<span class="sd">    'resp_time,resp_status,resp_length,timeout, \</span>
+<span class="sd">    'connection_error,max_connections,timeout_time'</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        transport_type (str): The transport type (metros, rers, tramways, buses</span>
+<span class="sd">            or noctiliens).</span>
+<span class="sd">        line_code (str): The line code (e.g. '187').</span>
+<span class="sd">        station_name (str): The name of the station (e.g.</span>
+<span class="sd">            'Division+Leclerc+-+Camille+Desmoulins').</span>
+<span class="sd">        way (str): Way of the line ('A', 'R' or 'A+R').</span>
+<span class="sd">        session (ClientSession): The aiohttp ClientSession.</span>
+<span class="sd">        fetch_conf (dict): Dictionary with configuration parameters for</span>
+<span class="sd">            fetching the content.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Response text.</span>
+<span class="sd">    """</span>
+    <span class="k">global</span> <span class="n">counter</span>
+
+    <span class="n">actual_time</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">resp_time</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">resp_status</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">resp_length</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">timeout</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">connection_error</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">api_url</span> <span class="o">=</span> <span class="s1">'https://api-ratp.pierre-grimaud.fr/v4/schedules/'</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="s1">'</span><span class="si">{transport_type}</span><span class="s1">/'</span> \
+             <span class="s1">'</span><span class="si">{line_code}</span><span class="s1">/'</span> \
+             <span class="s1">'</span><span class="si">{station_name}</span><span class="s1">/'</span> \
+             <span class="s1">'</span><span class="si">{way}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="nb">locals</span><span class="p">())</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">api_url</span><span class="o">+</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">actual_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+            <span class="n">dt_2</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="n">resp_time</span> <span class="o">=</span> <span class="p">(</span><span class="n">dt_2</span> <span class="o">-</span> <span class="n">actual_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+            <span class="n">resp_status</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span>
+            <span class="n">resp_text</span> <span class="o">=</span> <span class="k">await</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+            <span class="n">resp_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp_text</span><span class="p">)</span>
+            <span class="n">timeout</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">connection_error</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Response time: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">resp_time</span><span class="p">)</span>
+                        <span class="o">+</span> <span class="s2">" code: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">resp_status</span><span class="p">)</span>
+                        <span class="o">+</span> <span class="s2">" length: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">resp_length</span><span class="p">))</span>
+            <span class="n">fetch_log</span><span class="p">(</span><span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'log'</span><span class="p">],</span> <span class="n">actual_time</span><span class="p">,</span>
+                      <span class="n">transport_type</span><span class="p">,</span> <span class="n">line_code</span><span class="p">,</span> <span class="n">station_name</span><span class="p">,</span> <span class="n">way</span><span class="p">,</span>
+                      <span class="n">resp_time</span><span class="p">,</span> <span class="n">resp_status</span><span class="p">,</span>
+                      <span class="n">resp_length</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">connection_error</span><span class="p">,</span>
+                      <span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'max_connections'</span><span class="p">],</span> <span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'timeout'</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">resp_text</span>
+    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TimeoutError</span><span class="p">:</span>
+        <span class="n">dt_2</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">resp_time</span> <span class="o">=</span> <span class="p">(</span><span class="n">dt_2</span> <span class="o">-</span> <span class="n">actual_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+        <span class="n">timeout</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">connection_error</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Timeout"</span><span class="p">)</span>
+        <span class="n">fetch_log</span><span class="p">(</span><span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'log'</span><span class="p">],</span> <span class="n">actual_time</span><span class="p">,</span>
+                  <span class="n">transport_type</span><span class="p">,</span> <span class="n">line_code</span><span class="p">,</span> <span class="n">station_name</span><span class="p">,</span> <span class="n">way</span><span class="p">,</span>
+                  <span class="n">resp_time</span><span class="p">,</span> <span class="n">resp_status</span><span class="p">,</span>
+                  <span class="n">resp_length</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">connection_error</span><span class="p">,</span>
+                  <span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'max_connections'</span><span class="p">],</span> <span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'timeout'</span><span class="p">])</span>
+    <span class="k">except</span> <span class="n">client_exceptions</span><span class="o">.</span><span class="n">ClientConnectorError</span><span class="p">:</span>
+        <span class="n">dt_2</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">resp_time</span> <span class="o">=</span> <span class="p">(</span><span class="n">dt_2</span> <span class="o">-</span> <span class="n">actual_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+        <span class="n">timeout</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">connection_error</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Connection error"</span><span class="p">)</span>
+        <span class="n">fetch_log</span><span class="p">(</span><span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'log'</span><span class="p">],</span> <span class="n">actual_time</span><span class="p">,</span>
+                  <span class="n">transport_type</span><span class="p">,</span> <span class="n">line_code</span><span class="p">,</span> <span class="n">station_name</span><span class="p">,</span> <span class="n">way</span><span class="p">,</span>
+                  <span class="n">resp_time</span><span class="p">,</span> <span class="n">resp_status</span><span class="p">,</span>
+                  <span class="n">resp_length</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">connection_error</span><span class="p">,</span>
+                  <span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'max_connections'</span><span class="p">],</span> <span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'timeout'</span><span class="p">])</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="ratp_poll.ratp_api.stop_times.fetch_log">
+<code class="highlight language-python">
+fetch_log<span class="p">(</span><span class="n">fetch_log</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> </code>
+</h2>
+<div class="doc doc-contents">
+<p>Write the passed arguments as CSV to fetch_log if set.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fetch_log</code></td>
+<td><code>str</code></td>
+<td>
+<p>Path to the fethc log file.</p>
+</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>*args</code></td>
+<td><code>object</code></td>
+<td>
+<p>CSV line column values.</p>
+</td>
+<td><code>()</code></td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>ratp_poll/ratp_api/stop_times.py</code></summary>
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">fetch_log</span><span class="p">(</span><span class="n">fetch_log</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">"""Write the passed arguments as CSV to fetch_log if set.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        fetch_log (str): Path to the fethc log file.</span>
+<span class="sd">        *args (object): CSV line column values.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fetch_log</span><span class="p">):</span>
+        <span class="n">csv_columns</span> <span class="o">=</span> <span class="s1">'actual_date,transport_type,line_code,stop_code,way,'</span> \
+                      <span class="s1">'resp_time,resp_status,'</span> \
+                      <span class="s1">'resp_length,timeout,connection_error,'</span> \
+                      <span class="s1">'max_connections,timeout_time'</span>
+        <span class="n">log_csv</span> <span class="o">=</span> <span class="s2">","</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">])</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">"CSV fetch log line: "</span> <span class="o">+</span> <span class="n">log_csv</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">FileLock</span><span class="p">(</span><span class="n">fetch_log</span> <span class="o">+</span> <span class="s1">'.lock'</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+            <span class="n">path_exists</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">fetch_log</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fetch_log</span><span class="p">,</span> <span class="s1">'a+'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">path_exists</span><span class="p">):</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">csv_columns</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">log_csv</span><span class="p">)</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="ratp_poll.ratp_api.stop_times.get_stop_times">
+<code class="highlight language-python">
+get_stop_times<span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">)</span> </code>
+</h2>
+<div class="doc doc-contents">
+<p>Get the stop times for all the bus lines in a given stop.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>query</code></td>
+<td><code>tuple</code></td>
+<td>
+<p>Tuple with the query details (transport_type,
+line_code, station_name, way).</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>fetch_conf</code></td>
+<td><code>dict</code></td>
+<td>
+<p>Dictionary with configuration parameters for
+fetching the content.</p>
+</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>json</code></td>
+<td>
+<p>API answer in JSON format.
+float: Request time in seconds.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>ratp_poll/ratp_api/stop_times.py</code></summary>
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">get_stop_times</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">):</span>
+    <span class="sd">"""Get the stop times for all the bus lines in a given stop.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        query (tuple): Tuple with the query details (transport_type,</span>
+<span class="sd">            line_code, station_name, way).</span>
+<span class="sd">        fetch_conf (dict): Dictionary with configuration parameters for</span>
+<span class="sd">            fetching the content.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        json: API answer in JSON format.</span>
+<span class="sd">        float: Request time in seconds.</span>
+<span class="sd">    """</span>
+    <span class="n">json_array</span><span class="p">,</span> <span class="n">total_time</span> <span class="o">=</span> <span class="n">get_stop_times_batch</span><span class="p">([(</span><span class="n">query</span><span class="p">)],</span> <span class="n">fetch_conf</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">json</span> <span class="o">=</span> <span class="n">json_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">total_time</span>
+
+        <span class="k">return</span> <span class="n">json</span><span class="p">,</span> <span class="n">time</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"Empty answer"</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="ratp_poll.ratp_api.stop_times.get_stop_times_batch">
+<code class="highlight language-python">
+get_stop_times_batch<span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">)</span> </code>
+</h2>
+<div class="doc doc-contents">
+<p>Get the remaining times for a line to a given stop with a defined way
+    of several queries.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>queries</code></td>
+<td><code>list</code></td>
+<td>
+<p>List of tuples with the query details (transport_type,
+line_code, station_name, way).</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>fetch_conf</code></td>
+<td><code>dict</code></td>
+<td>
+<p>Dictionary with configuration parameters for
+fetching the content.</p>
+</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(list)</code></td>
+<td>
+<p>List containing the API answers in JSON format.
+(float): Total spent time in seconds.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>ratp_poll/ratp_api/stop_times.py</code></summary>
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">get_stop_times_batch</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">):</span>
+    <span class="sd">"""Get the remaining times for a line to a given stop with a defined way</span>
+<span class="sd">        of several queries.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        queries (list): List of tuples with the query details (transport_type,</span>
+<span class="sd">            line_code, station_name, way).</span>
+<span class="sd">        fetch_conf (dict): Dictionary with configuration parameters for</span>
+<span class="sd">            fetching the content.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (list): List containing the API answers in JSON format.</span>
+<span class="sd">        (float): Total spent time in seconds.</span>
+<span class="sd">    """</span>
+
+    <span class="n">dt_1</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+    <span class="n">future</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">ensure_future</span><span class="p">(</span><span class="n">run</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">))</span>
+    <span class="n">loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">future</span><span class="p">)</span>
+    <span class="n">dt_2</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+    <span class="n">json_array</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()))</span>
+    <span class="n">total_time</span> <span class="o">=</span> <span class="p">(</span><span class="n">dt_2</span> <span class="o">-</span> <span class="n">dt_1</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">json_array</span><span class="p">,</span> <span class="n">total_time</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="ratp_poll.ratp_api.stop_times.get_stop_times_batch_parsed">
+<code class="highlight language-python">
+get_stop_times_batch_parsed<span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">)</span> </code>
+</h2>
+<div class="doc doc-contents">
+<p>Get the remaining times for a line to a given stop with a defined way
+    of several queries in CSV format.</p>
+<p>The CSV column names are: 'actual_date,transport_type,line_code,
+station_name,way,remaining_minutes,destination_stop'</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>queries</code></td>
+<td><code>list</code></td>
+<td>
+<p>List of tuples with the query details (transport_type,
+line_code, station_name, way).</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>fetch_conf</code></td>
+<td><code>dict</code></td>
+<td>
+<p>Dictionary with configuration parameters for
+fetching the content.</p>
+</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>list</code></td>
+<td>
+<p>Parsed API answers in CSV format.
+float: Total spent time in seconds.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>ratp_poll/ratp_api/stop_times.py</code></summary>
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">get_stop_times_batch_parsed</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">):</span>
+    <span class="sd">"""Get the remaining times for a line to a given stop with a defined way</span>
+<span class="sd">        of several queries in CSV format.</span>
+
+<span class="sd">    The CSV column names are: 'actual_date,transport_type,line_code,</span>
+<span class="sd">    station_name,way,remaining_minutes,destination_stop'</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        queries (list): List of tuples with the query details (transport_type,</span>
+<span class="sd">            line_code, station_name, way).</span>
+<span class="sd">        fetch_conf (dict): Dictionary with configuration parameters for</span>
+<span class="sd">            fetching the content.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: Parsed API answers in CSV format.</span>
+<span class="sd">        float: Total spent time in seconds.</span>
+<span class="sd">    """</span>
+
+    <span class="n">json_array</span><span class="p">,</span> <span class="n">total_time</span> <span class="o">=</span> <span class="n">get_stop_times_batch</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">)</span>
+
+    <span class="n">csv_array</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">stop</span> <span class="ow">in</span> <span class="n">json_array</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">split_stop</span> <span class="o">=</span> <span class="n">stop</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'{'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Empty answer"</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">split_stop</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">stop</span> <span class="o">=</span> <span class="s1">'{'</span> <span class="o">+</span> <span class="n">split_stop</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">stop_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">stop</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"json error"</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">schedules</span> <span class="o">=</span> <span class="n">stop_json</span><span class="p">[</span><span class="s1">'result'</span><span class="p">][</span><span class="s1">'schedules'</span><span class="p">]</span>
+            <span class="n">metadata</span> <span class="o">=</span> <span class="n">stop_json</span><span class="p">[</span><span class="s1">'_metadata'</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">schedule</span> <span class="ow">in</span> <span class="n">schedules</span><span class="p">:</span>
+                <span class="n">selected_fields</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="n">metadata</span><span class="p">[</span><span class="s1">'date'</span><span class="p">],</span>
+                        <span class="n">metadata</span><span class="p">[</span><span class="s1">'call'</span><span class="p">],</span>
+                        <span class="n">schedule</span><span class="p">[</span><span class="s1">'message'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">' mn'</span><span class="p">,</span> <span class="s1">''</span><span class="p">),</span>
+                        <span class="n">schedule</span><span class="p">[</span><span class="s1">'destination'</span><span class="p">],</span>
+                        <span class="p">]</span>
+                <span class="n">row</span> <span class="o">=</span> <span class="s1">','</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">selected_fields</span><span class="p">)</span>
+                <span class="n">csv_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Answer without times"</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">"Unknown error: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+            <span class="k">continue</span>
+
+    <span class="k">return</span> <span class="n">csv_array</span><span class="p">,</span> <span class="n">total_time</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="ratp_poll.ratp_api.stop_times.run">
+<code class="highlight language-python">
+run<span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">)</span> </code>
+</h2>
+<div class="doc doc-contents">
+<p>Async function that generates a aiohttp ClientSession and fetches the
+given queries.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>queries</code></td>
+<td><code>list</code></td>
+<td>
+<p>List of tuples with the query details (transport_type,
+line_code, station_name, way).</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>fetch_conf</code></td>
+<td><code>dict</code></td>
+<td>
+<p>Dictionary with configuration parameters for
+fetching the content.</p>
+</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>list</code></td>
+<td>
+<p>The responses.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>ratp_poll/ratp_api/stop_times.py</code></summary>
+<div class="highlight">
+<pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">queries</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">):</span>
+    <span class="sd">"""Async function that generates a aiohttp ClientSession and fetches the</span>
+<span class="sd">    given queries.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        queries (list): List of tuples with the query details (transport_type,</span>
+<span class="sd">            line_code, station_name, way).</span>
+<span class="sd">        fetch_conf (dict): Dictionary with configuration parameters for</span>
+<span class="sd">            fetching the content.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: The responses.</span>
+<span class="sd">    """</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Fetch all responses within one Client session,</span>
+    <span class="c1"># keep connection alive for all requests.</span>
+    <span class="n">connector</span> <span class="o">=</span> <span class="n">TCPConnector</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'max_connections'</span><span class="p">])</span>
+    <span class="n">timeout</span> <span class="o">=</span> <span class="n">ClientTimeout</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'timeout'</span><span class="p">])</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">ClientSession</span><span class="p">(</span><span class="n">connector</span><span class="o">=</span><span class="n">connector</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">:</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">ensure_future</span><span class="p">(</span><span class="n">fetch</span><span class="p">(</span><span class="o">*</span><span class="n">query</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">))</span>
+            <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+        <span class="n">responses</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="c1"># you now have all response bodies in this variable</span>
+        <span class="k">return</span> <span class="n">responses</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr/>
+<div class="md-source-date">
+<small>
+    
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2020-08-29T19:18:50+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2020-08-29</span>
+</small>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-nav">
+<nav aria-label="Footer" class="md-footer-nav__inner md-grid">
+<a class="md-footer-nav__link md-footer-nav__link--prev" href="../../cli/" rel="prev" title="cli.py">
+<div class="md-footer-nav__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer-nav__title">
+<div class="md-ellipsis">
+<span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                cli.py
+              </div>
+</div>
+</a>
+<a class="md-footer-nav__link md-footer-nav__link--next" href="../../daemon/daemon/" rel="next" title="daemon.py">
+<div class="md-footer-nav__title">
+<div class="md-ellipsis">
+<span class="md-footer-nav__direction">
+                  Next
+                </span>
+                daemon.py
+              </div>
+</div>
+<div class="md-footer-nav__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src="../../../assets/javascripts/vendor.df0def68.min.js"></script>
+<script src="../../../assets/javascripts/bundle.ba57d267.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+<script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.0-beta.2/timeago.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.0-beta.2/timeago.locales.min.js"></script>
+          <script>
+            var nodes = document.querySelectorAll('.timeago');
+            var locale = nodes[0].getAttribute('locale');
+            timeago.render(nodes, locale);
+          </script>
+        </body>
+</html>

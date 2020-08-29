@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://cgupm.github.io/ratp_poll/reference/daemon/daemon/" rel="canonical"/>
+<link href="../../../assets/images/favicon.png" rel="shortcut icon"/>
+<meta content="mkdocs-1.1.2, mkdocs-material-5.5.11" name="generator"/>
+<title>daemon.py - ratp_poll documentation</title>
+<link href="../../../assets/stylesheets/main.860688db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&amp;display=fallback" rel="stylesheet"/>
+<style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+
+        <style>
+        .git-revision-date-localized-plugin-iso_date { display: none }
+        @media print {
+           .git-revision-date-localized-plugin-iso_date { display: inline } 
+           .git-revision-date-localized-plugin-timeago { display: none } 
+        }
+        </style>
+        </head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#ratp_poll.daemon.daemon">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header-nav md-grid">
+<a aria-label="ratp_poll documentation" class="md-header-nav__button md-logo" href="https://cgupm.github.io/ratp_poll" title="ratp_poll documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+<label class="md-header-nav__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header-nav__title" data-md-component="header-title">
+<div class="md-header-nav__ellipsis">
+<span class="md-header-nav__topic md-ellipsis">
+            ratp_poll documentation
+          </span>
+<span class="md-header-nav__topic md-ellipsis">
+            
+              daemon.py
+            
+          </span>
+</div>
+</div>
+<label class="md-header-nav__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" data-md-state="active" name="query" placeholder="Search" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<button aria-label="Clear" class="md-search__icon md-icon" data-md-component="search-reset" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header-nav__source">
+<a class="md-source" href="https://github.com/cgupm/ratp_poll/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    cgupm/ratp_poll
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="ratp_poll documentation" class="md-nav__button md-logo" href="https://cgupm.github.io/ratp_poll" title="ratp_poll documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"></path></svg>
+</a>
+    ratp_poll documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" href="https://github.com/cgupm/ratp_poll/" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    cgupm/ratp_poll
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../.." title="Overview">
+      Overview
+    </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-2" id="nav-2" type="checkbox"/>
+<label class="md-nav__link" for="nav-2">
+      Reference
+      <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Reference" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="nav-2">
+<span class="md-nav__icon md-icon"></span>
+        Reference
+      </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cli/" title="cli.py">
+      cli.py
+    </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" id="nav-2-2" type="checkbox"/>
+<label class="md-nav__link" for="nav-2-2">
+      ratp_api
+      <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="ratp_api" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="nav-2-2">
+<span class="md-nav__icon md-icon"></span>
+        ratp_api
+      </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ratp_api/stop_times/" title="stop_times.py">
+      stop_times.py
+    </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" id="nav-2-3" type="checkbox"/>
+<label class="md-nav__link" for="nav-2-3">
+      daemon
+      <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="daemon" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="nav-2-3">
+<span class="md-nav__icon md-icon"></span>
+        daemon
+      </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+        daemon.py
+        <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./" title="daemon.py">
+      daemon.py
+    </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.daemon.daemon">
+    ratp_poll.daemon.daemon
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.daemon.daemon.exec_and_write">
+    exec_and_write()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.daemon.daemon.start_daemon">
+    start_daemon()
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.daemon.daemon">
+    ratp_poll.daemon.daemon
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.daemon.daemon.exec_and_write">
+    exec_and_write()
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ratp_poll.daemon.daemon.start_daemon">
+    start_daemon()
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/cgupm/ratp_poll/edit/master/docs/reference/daemon/daemon.md" title="Edit this page">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1>daemon.py</h1>
+<div class="doc doc-object doc-module">
+<h2 class="hidden-toc" href="#ratp_poll.daemon.daemon" id="ratp_poll.daemon.daemon" style="visibility: hidden; width: 0; height: 0;">
+</h2>
+<div class="doc doc-contents first">
+<div class="doc doc-children">
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="ratp_poll.daemon.daemon.exec_and_write">
+<code class="highlight language-python">
+exec_and_write<span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">func_args</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">)</span> </code>
+</h2>
+<div class="doc doc-contents">
+<p>Execute a given function with the given args and write the output to the
+given file preventing collisions with a lock.</p>
+<p>Keyword arguments:
+func -- callable function to execute
+func_args -- list of arguments to pass to the executed function
+output_file -- path to the file were to append the results
+fetch_conf -- dictionary with configuration parameters for fetching the                   content</p>
+<details class="quote">
+<summary>Source code in <code>ratp_poll/daemon/daemon.py</code></summary>
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">exec_and_write</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">func_args</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">):</span>
+    <span class="sd">"""Execute a given function with the given args and write the output to the</span>
+<span class="sd">    given file preventing collisions with a lock.</span>
+
+<span class="sd">    Keyword arguments:</span>
+<span class="sd">    func -- callable function to execute</span>
+<span class="sd">    func_args -- list of arguments to pass to the executed function</span>
+<span class="sd">    output_file -- path to the file were to append the results</span>
+<span class="sd">    fetch_conf -- dictionary with configuration parameters for fetching the \</span>
+<span class="sd">                  content</span>
+<span class="sd">    """</span>
+    <span class="n">result</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">func_args</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Total iteration time: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"s"</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">FileLock</span><span class="p">(</span><span class="n">output_file</span> <span class="o">+</span> <span class="s1">'.lock'</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
+        <span class="n">path_exists</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">'a+'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">path_exists</span><span class="p">):</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Finished process at "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()))</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+<div class="doc doc-object doc-function">
+<h2 class="doc doc-heading" id="ratp_poll.daemon.daemon.start_daemon">
+<code class="highlight language-python">
+start_daemon<span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">func_args</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">processes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_conn_test</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fetch_conf</span><span class="o">=</span><span class="p">{})</span> </code>
+</h2>
+<div class="doc doc-contents">
+<p>Start a daemon that infinitely spawns a given function asynchronously
+every interval and writes the output to a file.</p>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>func</code></td>
+<td><code>callable</code></td>
+<td>
+<p>Function to execute.</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>func_args</code></td>
+<td><code>list</code></td>
+<td>
+<p>Arguments to pass to the executed function.</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>output_file</code></td>
+<td><code>str</code></td>
+<td>
+<p>Path to the file were to append the results.</p>
+</td>
+<td><em>required</em></td>
+</tr>
+<tr>
+<td><code>interval</code></td>
+<td><code>int</code></td>
+<td>
+<p>Number of seconds between spawns (the spawning period).</p>
+</td>
+<td><code>60</code></td>
+</tr>
+<tr>
+<td><code>processes</code></td>
+<td><code>int</code></td>
+<td>
+<p>Maximum number of simultaneously running spawned
+processes.</p>
+</td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>max_conn_test</code></td>
+<td><code>List[int]</code></td>
+<td>
+<p>Test different maximum (simultaneous) connections
+in random order. Pass 4 integer values: start, stop, step and
+repetition (e.g. <code>list(5, 101, 5, 1)</code>).</p>
+</td>
+<td><code>None</code></td>
+</tr>
+<tr>
+<td><code>fetch_conf</code></td>
+<td><code>Dict</code></td>
+<td>
+<p>Configuration parameters for fetching the content.</p>
+</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+<details class="quote">
+<summary>Source code in <code>ratp_poll/daemon/daemon.py</code></summary>
+<div class="highlight">
+<pre><span></span><code><span class="k">def</span> <span class="nf">start_daemon</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">func_args</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">60</span><span class="p">,</span>
+                 <span class="n">processes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">max_conn_test</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">fetch_conf</span><span class="p">:</span> <span class="n">Dict</span> <span class="o">=</span> <span class="p">{}):</span>
+    <span class="sd">"""Start a daemon that infinitely spawns a given function asynchronously</span>
+<span class="sd">    every interval and writes the output to a file.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        func (callable): Function to execute.</span>
+<span class="sd">        func_args (list): Arguments to pass to the executed function.</span>
+<span class="sd">        output_file (str): Path to the file were to append the results.</span>
+<span class="sd">        interval (int): Number of seconds between spawns (the spawning period).</span>
+<span class="sd">        processes (int): Maximum number of simultaneously running spawned</span>
+<span class="sd">            processes.</span>
+<span class="sd">        max_conn_test (list): Test different maximum (simultaneous) connections</span>
+<span class="sd">            in random order. Pass 4 integer values: start, stop, step and</span>
+<span class="sd">            repetition (e.g. `list(5, 101, 5, 1)`).</span>
+<span class="sd">        fetch_conf (dict): Configuration parameters for fetching the content.</span>
+<span class="sd">    """</span>
+    <span class="n">pool</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="n">processes</span><span class="p">)</span>
+    <span class="n">max_conn_values</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">max_conn_test</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">max_conn_test</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">):</span>
+            <span class="n">max_conn_start</span> <span class="o">=</span> <span class="n">max_conn_test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">max_conn_stop</span> <span class="o">=</span> <span class="n">max_conn_test</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">max_conn_step</span> <span class="o">=</span> <span class="n">max_conn_test</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">max_conn_repeat</span> <span class="o">=</span> <span class="n">max_conn_test</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">max_conn_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">max_conn_start</span><span class="p">,</span> <span class="n">max_conn_stop</span><span class="p">,</span>
+                                         <span class="n">max_conn_step</span><span class="p">))</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">max_conn_values</span><span class="p">)</span>
+            <span class="n">max_conn_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
+                                    <span class="n">itertools</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">max_conn_repeat</span><span class="p">)</span>
+                                    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">max_conn_values</span><span class="p">))</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">max_conn_values</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">max_conn_test</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">max_conn_values</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">fetch_conf</span><span class="p">[</span><span class="s1">'max_connections'</span><span class="p">]</span> <span class="o">=</span> <span class="n">max_conn_values</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Spawned process at "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()))</span>
+        <span class="n">pool</span><span class="o">.</span><span class="n">apply_async</span><span class="p">(</span><span class="n">exec_and_write</span><span class="p">,</span> <span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">func_args</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span>
+                                          <span class="n">fetch_conf</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">max_conn_test</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">max_conn_values</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">while</span> <span class="n">pool</span><span class="o">.</span><span class="n">_cache</span><span class="p">:</span>
+                    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Finished max_conn_test"</span><span class="p">)</span>
+                <span class="n">pool</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="n">pool</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">interval</span><span class="p">)</span>
+</code></pre>
+</div>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr/>
+<div class="md-source-date">
+<small>
+    
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2020-08-29T19:18:50+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2020-08-29</span>
+</small>
+</div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-nav">
+<nav aria-label="Footer" class="md-footer-nav__inner md-grid">
+<a class="md-footer-nav__link md-footer-nav__link--prev" href="../../ratp_api/stop_times/" rel="prev" title="stop_times.py">
+<div class="md-footer-nav__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer-nav__title">
+<div class="md-ellipsis">
+<span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                stop_times.py
+              </div>
+</div>
+</a>
+</nav>
+</div>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+          Material for MkDocs
+        </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script src="../../../assets/javascripts/vendor.df0def68.min.js"></script>
+<script src="../../../assets/javascripts/bundle.ba57d267.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+<script>
+        app = initialize({
+          base: "../../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../../assets/javascripts/worker/search.5eca75d3.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.0-beta.2/timeago.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.0-beta.2/timeago.locales.min.js"></script>
+          <script>
+            var nodes = document.querySelectorAll('.timeago');
+            var locale = nodes[0].getAttribute('locale');
+            timeago.render(nodes, locale);
+          </script>
+        </body>
+</html>
